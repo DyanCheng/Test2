@@ -1,98 +1,104 @@
-import * as Device from 'expo-device';
-import { Platform, StyleSheet } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { StyleSheet, Text, View } from "react-native";
 
-import { AnimatedIcon } from '@/components/animated-icon';
-import { HintRow } from '@/components/hint-row';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { WebBadge } from '@/components/web-badge';
-import { BottomTabInset, MaxContentWidth, Spacing } from '@/constants/theme';
-
-function getDevMenuHint() {
-  if (Platform.OS === 'web') {
-    return <ThemedText type="small">use browser devtools</ThemedText>;
-  }
-  if (Device.isDevice) {
-    return (
-      <ThemedText type="small">
-        shake device or press <ThemedText type="code">m</ThemedText> in terminal
-      </ThemedText>
-    );
-  }
-  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
+const App = () => {
   return (
-    <ThemedText type="small">
-      press <ThemedText type="code">{shortcut}</ThemedText>
-    </ThemedText>
+    <View style={styles.screen}>
+      <View style={styles.content}>
+        <View style={[styles.block, styles.blue]}>
+          <Text style={styles.lightLabel}>1</Text>
+        </View>
+        <View style={[styles.block, styles.red]}>
+          <Text style={styles.lightLabel}>2</Text>
+        </View>
+
+        <View style={styles.middleRow}>
+          <View style={[styles.middleBlock, styles.yellow]}>
+            <Text style={styles.darkLabel}>3</Text>
+          </View>
+          <View style={[styles.middleBlock, styles.green]}>
+            <Text style={styles.lightLabel}>4</Text>
+          </View>
+          <View style={[styles.middleBlock, styles.purple]}>
+            <Text style={styles.lightLabel}>5</Text>
+          </View>
+        </View>
+
+        <View style={[styles.block, styles.orange, styles.bottomBlock]}>
+          <Text style={styles.lightLabel}>6</Text>
+        </View>
+      </View>
+
+      <Text style={styles.studentLabel}>Nguyễn Duy Anh - Bit240020</Text>
+    </View>
   );
-}
-
-export default function HomeScreen() {
-  return (
-    <ThemedView style={styles.container}>
-      <SafeAreaView style={styles.safeArea}>
-        <ThemedView style={styles.heroSection}>
-          <AnimatedIcon />
-          <ThemedText type="title" style={styles.title}>
-            Welcome to&nbsp;Expo
-          </ThemedText>
-        </ThemedView>
-
-        <ThemedText type="code" style={styles.code}>
-          get started
-        </ThemedText>
-
-        <ThemedView type="backgroundElement" style={styles.stepContainer}>
-          <HintRow
-            title="Try editing"
-            hint={<ThemedText type="code">src/app/index.tsx</ThemedText>}
-          />
-          <HintRow title="Dev tools" hint={getDevMenuHint()} />
-          <HintRow
-            title="Fresh start"
-            hint={<ThemedText type="code">npm run reset-project</ThemedText>}
-          />
-        </ThemedView>
-
-        {Platform.OS === 'web' && <WebBadge />}
-      </SafeAreaView>
-    </ThemedView>
-  );
-}
-
+};
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
+    backgroundColor: "#ffffff",
+    paddingLeft: 26,
+    paddingTop: 14,
   },
-  safeArea: {
+  content: {
+    width: 480,
+    gap: 7,
+  },
+  block: {
+    height: 93,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  middleRow: {
+    flexDirection: "row",
+    width: 364,
+    gap: 8,
+  },
+  middleBlock: {
     flex: 1,
-    paddingHorizontal: Spacing.four,
-    alignItems: 'center',
-    gap: Spacing.three,
-    paddingBottom: BottomTabInset + Spacing.three,
-    maxWidth: MaxContentWidth,
+    height: 192,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  heroSection: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flex: 1,
-    paddingHorizontal: Spacing.four,
-    gap: Spacing.four,
+  lightLabel: {
+    color: "#ffffff",
+    fontSize: 40,
+    fontWeight: "700",
   },
-  title: {
-    textAlign: 'center',
+  darkLabel: {
+    color: "#000000",
+    fontSize: 40,
+    fontWeight: "700",
   },
-  code: {
-    textTransform: 'uppercase',
+  blue: {
+    backgroundColor: "#2f80ed",
   },
-  stepContainer: {
-    gap: Spacing.three,
-    alignSelf: 'stretch',
-    paddingHorizontal: Spacing.three,
-    paddingVertical: Spacing.four,
-    borderRadius: Spacing.four,
+  red: {
+    backgroundColor: "#ff3b3f",
+  },
+  yellow: {
+    backgroundColor: "#ffd21c",
+  },
+  green: {
+    backgroundColor: "#2eb16b",
+  },
+  purple: {
+    backgroundColor: "#7d3ddd",
+  },
+  orange: {
+    backgroundColor: "#ff7414",
+  },
+  bottomBlock: {
+    height: 160,
+  },
+  studentLabel: {
+    position: "absolute",
+    width: 480,
+    bottom: 8,
+    left: 26,
+    color: "#1f2937",
+    fontSize: 18,
+    textAlign: "center",
   },
 });
+
+export default App;
