@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Lesson1",
-    "slug": "Lesson1",
+    "name": "Lesson4",
+    "slug": "lesson4",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "lesson1",
+    "scheme": "lesson4",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon"
@@ -31,6 +31,15 @@
           "backgroundColor": "#208AEF",
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
+        }
+      ],
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Lesson4 to access your photos to set student avatars.",
+          "cameraPermission": false,
+          "microphonePermission": false
         }
       ]
     ],
