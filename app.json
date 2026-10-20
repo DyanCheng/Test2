@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "name": "BIT240020 Food Manager",
+    "slug": "bit240020-food-manager",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": { "resizeMode": "contain", "backgroundColor": "#ffffff" },
+    "android": { "package": "com.bit240020.foodmanager" },
+    "ios": { "bundleIdentifier": "com.bit240020.foodmanager" }
+  }
+}
